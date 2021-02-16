@@ -1,0 +1,22 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.5)
+
+PROJECT("ledd")
+
+SET(EXTRA_CFLAGS "${EXTRA_CFLAGS} -Wall -g")
+
+SET (SOURCES
+	${CMAKE_SOURCE_DIR}/src/ledApp.c
+	${CMAKE_SOURCE_DIR}/src/ledFileIPC.c
+	${CMAKE_SOURCE_DIR}/src/ledPlatform.c
+	${CMAKE_SOURCE_DIR}/src/ledPoll.c
+	${CMAKE_SOURCE_DIR}/src/linkv2/ledLinkv2Cmd.c
+	${CMAKE_SOURCE_DIR}/src/linkv2/ledNcpSocket.c
+	${CMAKE_SOURCE_DIR}/src/linkv2/ledPlatformLinkV2.c
+)
+
+SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS} -fPIE")
+SET(CMAKE_EXE_LINKER_FLAGS "-Wl,--as-needed -pie")
+
+ADD_EXECUTABLE (${PROJECT_NAME} ${SOURCES})
+
+INSTALL(TARGETS ${PROJECT_NAME} DESTINATION bin)

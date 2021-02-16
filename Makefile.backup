@@ -1,0 +1,26 @@
+export SRCS += src/ledApp.c
+export SRCS += src/ledPlatform.c
+export SRCS += src/ledPoll.c
+export SRCS += src/ledFileIPC.c
+
+ifeq ($(WASH_PLATFORM_TYPE), integrated)
+	PLATFORM_DIR = platform/$(PLATFORM)
+else ifeq ($(PLATFORM), samsungtv)
+	PLATFORM_DIR = platform/$(PLATFORM)
+else
+	PLATFORM_DIR = platform/generic-linkv2
+endif
+
+TARGET = ledd
+
+all: $(TARGET)
+.PHONY: all
+
+$(TARGET):
+	make -C $(PLATFORM_DIR)
+	ln -f $(PLATFORM_DIR)/$(TARGET) .
+
+clean:
+	make -C $(PLATFORM_DIR) clean
+	rm -f $(TARGET)
+.PHONY: clean

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+. ${HUB_DEFAULT_CONF_PATH}/hub
+. ${HUB_DEFAULT_CONF_PATH}/hub-functions
+. ${HUB_DEFAULT_CONF_PATH}/ledd
+. ${HUB_DEFAULT_CONF_PATH}/hub-core
+
+start() {
+  mkdir -p ${LEDD_LOGDIR}
+
+  SPAWNR_ARGS="-o ${LEDD_LOGFILE} -s ${LEDD_LOGSIZE} -c ${LEDD_LOGCOUNT} -t"
+
+  start_daemon "${SPAWNR_ARGS}" "${LEDD_DAEMON}"
+}
+
+stop() {
+  stop_daemon ${LEDD_DAEMON}
+}
+
+parse_args "$@"
+retExit=$?
+
+exit ${retExit}

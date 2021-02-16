@@ -1,0 +1,22 @@
+#!/bin/sh
+# Dependencies:
+#    - ${HUB_ETC_PATH}/default/hub
+
+export LEDD_DAEMON="ledd"
+
+export LEDD_LOGDIR="${HUB_LOG_PATH}/${LEDD_DAEMON}"
+export LEDD_LOGCOUNT="4"
+export LEDD_LOGFILE="${LEDD_LOGDIR}/${LEDD_DAEMON}.log"
+export LEDD_LOGSIZE="32768"
+
+export LEDD_LED_STATE_FILE="${HUB_TMP_PATH}/ledstate"
+export LEDD_WASH_FACTORY_RESET='\xc'
+export LEDD_WASH_FACTORY_RESET_DONE='\xd'
+
+export LEDD_HUB_STATUS_FILE="${HUB_TMP_PATH}/hubstatus"
+export LEDD_HUB_STATUS_READY_TO_SETUP='\x1'
+export LEDD_HUB_STATUS_RUNNING='\x2'
+export LEDD_HUB_STATUS_NEED_TO_RESET='\x3'
+export LEDD_HUB_STATUS_CLAIMED='\x4'
+export LEDD_HUB_STATUS_UNCLAIMED='\x5'
+export LEDD_HUB_STATUS_RESET_COMPLETED='\x6'

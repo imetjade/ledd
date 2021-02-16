@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall -g -fPIE  -Wl,--as-needed -pie -rdynamic CMakeFiles/ledd.dir/src/ledApp.o CMakeFiles/ledd.dir/src/ledFileIPC.o CMakeFiles/ledd.dir/src/ledPlatform.o CMakeFiles/ledd.dir/src/ledPoll.o CMakeFiles/ledd.dir/src/linkv2/ledLinkv2Cmd.o CMakeFiles/ledd.dir/src/linkv2/ledNcpSocket.o CMakeFiles/ledd.dir/src/linkv2/ledPlatformLinkV2.o  -o ledd 
